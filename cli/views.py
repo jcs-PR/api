@@ -17,7 +17,7 @@ class CliView(APIView):
         if valid_args(args) == False:
             output = "Invalid argument string"
         else:
-            full_cmd = f"{py_command()} {sherlock_dir()}/sherlock {args} --no-output"
+            full_cmd = f"{py_command()} {sherlock_dir()}/sherlock --no-output {args}"
             proc = Popen(full_cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
             outs, errs = proc.communicate()
             output = outs if outs else errs
